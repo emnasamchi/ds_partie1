@@ -14,6 +14,10 @@ def ajouter():
     if titre == "":
         print("Erreur : le titre ne peut pas être vide.")
         return
+    # on évite d'ajouter deux fois la même tâche
+    if titre.lower() in [t.lower() for t in taches]:
+        print("Cette tâche existe déjà.")
+        return
     taches.append(titre)
     print("Tâche ajoutée.")
 
@@ -24,6 +28,7 @@ def afficher():
         return
     for i, t in enumerate(taches, start=1):
         print(f"{i}. {t}")
+    print(f"Total : {len(taches)} tâche(s)")
 
 
 def rechercher():
@@ -51,4 +56,4 @@ while True:
         print("Au revoir !")
         break
     else:
-        print("Erreur : option invalide.")
+        print("Option invalide, réessayez.")
